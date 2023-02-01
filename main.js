@@ -50,7 +50,7 @@ global.timestamp = {
 const __dirname = global.__dirname(import.meta.url)
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
-global.prefix = new RegExp('^[' + (opts['prefix'] || '‎\/!#.\\').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || 'â€Ž\/!#.\\').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
 
 global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
@@ -85,7 +85,7 @@ global.loadDatabase = async function loadDatabase() {
 }
 loadDatabase()
 
-global.authFile = `${opts._[0] || 'fangz'}.data.json`
+global.authFile = `${opts._[0] || 'sanara'}.mini.json`
 const { state, saveState } = useSingleFileAuthState(global.authFile)
 
 const connectionOptions = {
@@ -122,7 +122,7 @@ function clearTmp() {
 }
 
 const hehe = async (jid, options) => {
-  let wm = 'Koncit�';
+  let wm = 'Koncit…';
   let gambar = 'https://telegra.ph/file/2d06f0936842064f6b3bb.png';
   try {
     gambar = await conn.profilePictureUrl(jid, 'image');
@@ -146,7 +146,7 @@ const hehe = async (jid, options) => {
         }
       }
     }
-    const txt = `\n[ ✅ ] Hallo Owner @${jid.split`@`[0]}, Saya berhasil tersambung ke script mu...\n\n\n📑Sumber Script:\nhttps://tinyurl.com/2apdztcj`
+    const txt = `\n[ âœ… ] Hallo Owner @${jid.split`@`[0]}, Saya berhasil tersambung ke script mu...\n\n\nðŸ“‘Sumber Script:\nhttps://tinyurl.com/2apdztcj`
     return await conn.sendMessage(jid, { text: txt, mentions: [jid], ...options }, { quoted: fkontak, ephemeralExpiration: 86400, ...options })
   }
 }
@@ -193,7 +193,7 @@ global.reloadHandler = async function (restatConn) {
     conn.ev.off('creds.update', conn.credsUpdate)
   }
 
-  conn.welcome = '👋 Wellcome @user'
+  conn.welcome = 'ðŸ‘‹ Wellcome @user'
   conn.bye = '*@user* Meninggalkan Group'
   conn.spromote = '@user sekarang admin!'
   conn.sdemote = '@user sekarang bukan admin!'
@@ -306,5 +306,5 @@ async function _quickTest() {
 }
 
 _quickTest()
-  .then(() => conn.logger.info('☑️ Berhasil Banh'))
+  .then(() => conn.logger.info('â˜‘ï¸ Berhasil Banh'))
   .catch(e => format(e))
